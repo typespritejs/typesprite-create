@@ -1,19 +1,22 @@
 {
   "name": "create-typesprite",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "type": "module",
   "author": "Christoph Schnackenberg <mail@xtoff.games>",
   "license": "MIT",
   "bin": {
-    "create-typesprite": "index.js"
+    "create-typesprite": "bin/create-typesprite.js"
   },
   "files": [
     "index.js",
+    "README.MD",
+    "LICENSE.MD",
     "template-*",
     "dist"
   ],
   "main": "index.js",
   "scripts": {
+    "dev": "node index.js"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"

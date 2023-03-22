@@ -1,1 +1,1 @@
-console.log("TypeSpriteJS Starter Templates - WIP");
+console.log("TypeSpriteJS Starter Templates. Sorry, this does not work yet.");
