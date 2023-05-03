@@ -7,6 +7,9 @@
   "bin": {
     "create-typesprite": "bin/create-typesprite.js"
   },
+  "dependencies": {
+    "prompts": "^2.4.2"
+  },
   "files": [
     "index.js",
     "README.MD",
