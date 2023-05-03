@@ -1,0 +1,47 @@
+# Your world.
+#
+# Learn more: https://typespritejs.dev/start/worlds.html
+
+
+# A game object called 'screen' with two Components.
+# '!' means it'll created automatically
+[!screen]
+@GraphicsEngine:typesprite
+@AudioManager:typesprite
+clearColor = #448
+
+
+# A game object called 'userRect'.
+# "->screen" means that it'll be initialized after screen
+# It is controlled by the user thanks to @RectUserControl
+[!userRect->screen]
+@Rect
+@RectUserControl
+color = #8f8
+startX = 200
+speedPixPerSec = 300
+
+
+# A game object called 'boringRect'
+# It is not controlled at all
+[!boringRect->screen]
+@Rect
+color = #f88
+startX = 300
+startY = 200
+
+
+# A game object called 'sinusRect'
+# It is controlled by the user thanks to @RectSinusControl
+[!sinusRect->screen]
+@Rect
+@RectSinusControl
+color = #ff8
+startX = 430
+startY = 200
+
+
+# A game object called 'sinusRect2'.
+# It's a copy of sinusRect but with adjusted properties.
+[!sinusRect2(sinusRect)]
+startY = 350
