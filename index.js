@@ -42,18 +42,18 @@ const config = [
             {
                 title: 'Starter',
                 value: 'starter',
-                description: `Only the base folders and an example world.`,
+                description: `Only the folders and a minimal example.`,
             },
             {
-                title: 'Starter (+config, +sprite sheet)',
-                value: 'starterConfig',
-                description: `Like Starter but with typesprite.config.mjs and a SpriteSheet`,
+                title: 'Starter (+config)',
+                value: 'starter-config',
+                description: `Like Starter but with typesprite.config.mjs.`,
             },
-            {
-                title: 'Starter with screen flow',
-                value: 'starterScreenFlow',
-                description: `Basic screen flow: Developer Logo -> Title Screen -> Run Game`,
-            },
+            // {
+            //     title: 'Starter with screen flow',
+            //     value: 'starter-screen-flow',
+            //     description: `Basic screen flow: Developer Logo -> Title Screen -> Run Game`,
+            // },
             // {
             //     title: '[Advanced] NPM Components export ',
             //     value: 'exporter',
@@ -64,11 +64,11 @@ const config = [
             //     value: 'customMain',
             //     description: `Use a custom main.ts and do all component imports and world setup yourself`,
             // },
-            // {
-            //     title: '[Experimental] ESM (vanilla js)',
-            //     value: 'esmOnly',
-            //     description: `Use TypeSpriteJS directly. No Typescript, no bundler, no dev server, no asset-tools, ...`,
-            // },
+            {
+                title: '[Experimental] Vanilla JS',
+                value: 'esm-only',
+                description: `No Typescript, no bundler, no dev server, no asset-tools, ...`,
+            },
         ],
     }
 ];
@@ -77,7 +77,7 @@ const config = [
 (async () => {
     console.log(`⭐ TypeSpriteJS Game Engine - Starter ⭐ `);
     const response = await prompts(config);
-    if (!Object.keys(response).length)
+    if (Object.keys(response).length === 0)
         return;
 
     try {
@@ -123,6 +123,8 @@ async function deployStarter({name, template}) {
     // const targetDir = name;
     const root = path.join(cwd, name)
 
+    fs.mkdirSync(root, { recursive: true })
+
     const write = (file, content) => {
         const targetPath = path.join(root, renameFiles[file] ?? file)
         if (content) {
@@ -147,7 +149,7 @@ async function deployStarter({name, template}) {
     write('package.json', JSON.stringify(pkg, null, 2) + '\n')
 
     return {
-        folderName: name, // TODO replace this...
+        folderName: name,
     }
 }
 
@@ -164,6 +166,9 @@ function pkgFromUserAgent(userAgent) {
 function copyDir(srcDir, destDir) {
     fs.mkdirSync(destDir, { recursive: true })
     for (const file of fs.readdirSync(srcDir)) {
+        if (file.indexOf(".DS_Store") > -1)
+            continue;
+
         const srcFile = path.resolve(srcDir, file)
         const destFile = path.resolve(destDir, file)
         copy(srcFile, destFile)
@@ -171,6 +176,9 @@ function copyDir(srcDir, destDir) {
 }
 
 function copy(src, dest) {
+    if (src.indexOf(".DS_Store") > -1)
+        return;
+
     const stat = fs.statSync(src)
     if (stat.isDirectory()) {
         copyDir(src, dest)

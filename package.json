@@ -1,6 +1,6 @@
 {
   "name": "create-typesprite",
-  "version": "0.2.4",
+  "version": "0.2.9",
   "type": "module",
   "author": "Christoph Schnackenberg <mail@xtoff.games>",
   "license": "MIT",
@@ -14,8 +14,7 @@
     "index.js",
     "README.MD",
     "LICENSE.MD",
-    "template-*",
-    "dist"
+    "templates"
   ],
   "main": "index.js",
   "scripts": {

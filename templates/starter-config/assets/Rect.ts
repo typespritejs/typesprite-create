@@ -41,7 +41,6 @@ export class Rect extends Component {
         rect.setColor(this.color);
         rect.x = this.startX;
         rect.y = this.startY;
-
         this.quad = rect;
     }
 

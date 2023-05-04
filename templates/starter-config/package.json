@@ -1,0 +1,17 @@
+{
+  "name": "_",
+  "displayName": "_",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "typesprite dev",
+    "build": "typesprite build"
+  },
+  "dependencies": {
+    "typesprite": "^0.2.8"
+  },
+  "author": "",
+  "license": "ISC"
+}
