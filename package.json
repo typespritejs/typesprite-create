@@ -18,7 +18,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "push": "npm version patch && npm publish"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
