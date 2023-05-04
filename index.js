@@ -125,6 +125,10 @@ async function deployStarter({name, template}) {
 
     fs.mkdirSync(root, { recursive: true })
 
+    if (template.indexOf("esm-only") === -1) {
+        fs.mkdirSync(path.join(root, '.cache'), { recursive: true })
+    }
+
     const write = (file, content) => {
         const targetPath = path.join(root, renameFiles[file] ?? file)
         if (content) {
